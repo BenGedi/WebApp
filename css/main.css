@@ -99,6 +99,9 @@ textarea {
 * {
     box-sizing: border-box;
 }
+*:focus{
+    border: 2px solid rgb(53, 144, 255);
+}
 html{
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
