@@ -113,7 +113,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-width: 600px;
+    min-width: 657px;
 }
 ul, ol {
     list-style: none;
@@ -303,7 +303,7 @@ nav div:last-child {
     color:white;
     text-decoration: none;
     display: block;
-    font-size: .9rem;
+    font-size: .8rem;
     background-color: #646464;
 }
 .tab-active a,.tab-active a:hover{
