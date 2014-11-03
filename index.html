@@ -97,11 +97,17 @@
 
                 <div class="tabs">
                     <ul>
-                        <li class="tab-active"><a tabindex="1" href="#quick-reports"><i class="fa fa-external-link"></i> Quick Reports</a></li>
-                        <li><a tabindex="2" href="#fmy-folders"><i class="fa fa-star-o"></i> My Folders</a></li>
-                        <li><a tabindex="3" href="#my-team-folders"><i class="fa fa-folder-open-o"></i> My Team Folders</a>
+                        <li class="tab-active"><a tabindex="1" href="#quick-reports">
+                            <i class="fa fa-external-link"></i> Quick Reports</a>
                         </li>
-                        <li><a tabindex="4" href="#public-folders"><i class="fa fa-file-o"></i> Public Folders</a>
+                        <li><a tabindex="2" href="#fmy-folders">
+                            <i class="fa fa-star-o"></i> My Folders</a>
+                        </li>
+                        <li><a tabindex="3" href="#my-team-folders">
+                            <i class="fa fa-folder-open-o"></i> My Team Folders</a>
+                        </li>
+                        <li><a tabindex="4" href="#public-folders">
+                            <i class="fa fa-file-o"></i> Public Folders</a>
                         </li>
                     </ul>
 
@@ -112,8 +118,41 @@
                                 <option value="ynet">Ynet</option>
                                 <option value="google">Google</option>
                             </select>
-                            <a class="expand" href="#">expand</a>
-                            <a class="settings" href="#">settings</a>
+                            <div class="reports-options-buttons">
+                                <a class="btn-expand" href="#">expand</a>
+                                <a class="btn-settings" id="btn-settings" href="#!">settings</a>
+                            </div>
+                            <div id="settings" class="settings hidden">
+                                <form name="frmSettings" method="get" action="#!">
+                                    <fieldset class="frmSettings-fieldset">
+                                        <span class="setting--report-num">Reprot 01</span>
+                                        <div class="frmSettings-name">
+                                            <label class="frmSettings-label" for="name">Name:</label>
+                                            <input class="frmSettings-input" type="text" id="name">
+                                        </div>
+                                        <div class="frmSettings-url">
+                                            <label class="frmSettings-label" for="url">URL:</label>
+                                            <input class="frmSettings-input" type="url" id="url">
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <span>Reprot 02</span>
+                                        <label for="name">Name:</label>
+                                        <input type="text" id="name">
+                                        <label for="url">URL:</label>
+                                        <input type="url" id="url">
+                                    </fieldset>
+                                    <fieldset>
+                                        <span>Reprot 03</span>
+                                        <label for="name">Name:</label>
+                                        <input type="text" id="name">
+                                        <label for="url">URL:</label>
+                                        <input type="url" id="url">
+                                    </fieldset>
+                                    <a href="#!">Cancel</a>
+                                    <input type="submit" id="submit" value="Save">
+                                </form>
+                            </div>
                         </div>
                         <div class="reports-content">
                             <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
@@ -131,7 +170,7 @@
                 </div>
             </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>');</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
     </body>

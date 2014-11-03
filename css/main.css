@@ -100,7 +100,7 @@ textarea {
     box-sizing: border-box;
 }
 *:focus{
-    border: 2px solid rgb(53, 144, 255);
+    outline: 2px solid rgb(53, 144, 255);
 }
 html{
     font-family: 'Open Sans', sans-serif;
@@ -113,6 +113,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    min-width: 600px;
 }
 ul, ol {
     list-style: none;
@@ -137,8 +138,8 @@ header {
     background-color: black;
 }
 header>div.layout-wrap{
-    height: 62px;
-    margin: 0px 1.767905%;
+    height: 60px;
+    margin: 0px 1%;
     padding: 16px;
 }
 img[alt="netcraft"] {
@@ -182,9 +183,9 @@ input[name="q"] {
     padding-left: 15px;
 }
 nav{
-    height: 160px;
+    height: 155px;
 }
-.arrow, ul.action-list {
+.arrow, .action-list, .settings{
     -webkit-transition: all .4s ease;
     -moz-transition: all .4s ease;
     -ms-transition: all .4s ease;
@@ -196,6 +197,7 @@ nav{
     float: left;
     margin-right: 3%;
     width: 31.33%;
+    height: inherit;
     background-color: black;
     background-repeat: no-repeat;
     background-position: center 70px;
@@ -207,6 +209,7 @@ nav div:last-child {
     position: absolute;
     width: 100%;
     height: 36px;
+    top:119px;
     line-height: 36px; /*height*/
     background: #e2e2e2;
     font-size: .8rem;
@@ -228,7 +231,7 @@ nav div:last-child {
 .menu-hint p {
     margin:0;
 }
-ul.action-list{
+.action-list{
     max-height: 0;
     position: relative;
     z-index: 10;
@@ -269,7 +272,6 @@ ul.action-list{
     font-size: 1.1rem;
     line-height: 1.3;
     margin-top: 10px;
-    margin-bottom: 68px;
 }
 .feature-reports{
     background-image: url(../img/icons/action-report-new.png);
@@ -317,27 +319,34 @@ ul.action-list{
     background: #EBEBEB;
     position: relative;
 }
-div.reports-options a {
+.reports-options-buttons {
     position: absolute;
+    width: 80px;
+    height: 40px;
+    display: inline-block;
     top: 20px;
+    right: 16px;
+}
+.reports-options-buttons a {
+    position: absolute;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    display: inline-block;
     width: 40px;
-    height: 40px;
+    height: inherit;
     text-indent: -9999px;
+    z-index: 1;
 }
-.reports-options .expand {
-    background: url(../img/icons/expand.png) no-repeat center;
-    right: 56px;
+.reports-options-buttons a.btn-expand {
+    background-image: url(../img/icons/expand.png);
+    right: 40px;
 }
-.reports-options .settings {
-    background: url(../img/icons/settings.png) no-repeat center;
-    right: 16px;
+.reports-options-buttons a.btn-settings {
+    background-image: url(../img/icons/settings.png);
+    right: 0;
 }
 .reports-options {
 }
-.reports-options a:hover {
+.reports-options-buttons a:hover ,.active{
     background-color: white;
 }
 .reports-content {
@@ -348,6 +357,19 @@ div.reports-options a {
     width: 100%;
     height: inherit;
     padding-bottom: 16px;
+}
+.settings{
+    position: absolute;
+    background: white;
+    right: 16px;
+    left: 16px;
+    top: 60px;
+    max-width: 1240px;
+    height: 260px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 0.9);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 0.9);
+    box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 0.9);
 }
 
 
