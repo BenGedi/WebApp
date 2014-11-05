@@ -85,7 +85,8 @@ document.getElementById('btn-settings').addEventListener('click',function(e){
 	if(hasActive){
 		target.classList.remove('active');
 		setting.classList.add('hidden');
-	}else {
+	}
+	else {
 		target.classList.add('active');
 		setting.classList.remove('hidden');
 	}

@@ -328,9 +328,10 @@ nav div:last-child {
     top: 18px;
     right: 16px;
 }
-.reports-options-buttons a {
+.reports-options-buttons a ,.reports-options-buttons button {
     position: absolute;
     background-repeat: no-repeat;
+    background-color: inherit;
     background-position: 50% 50%;
     width: 40px;
     height: inherit;
@@ -341,13 +342,12 @@ nav div:last-child {
     background-image: url(../img/icons/expand.png);
     right: 40px;
 }
-.reports-options-buttons a.btn-settings {
+.reports-options-buttons button.btn-settings {
     background-image: url(../img/icons/settings.png);
     right: 0;
+    border: none;
 }
-.reports-options {
-}
-.reports-options-buttons a:hover ,.active{
+.reports-options-buttons a:hover, .reports-options-buttons button:hover,.reports-options-buttons .active{
     background-color: white;
 }
 .reports-content {
