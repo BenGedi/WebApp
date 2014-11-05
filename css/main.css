@@ -172,7 +172,7 @@ input[name="q"] {
     margin: 0px 1.767905%;
     padding: 16px;
 }
-.notifications,nav {
+.notifications,nav,fieldset.sf-settings {
     margin-bottom: 16px;
 }
 .notifications {
@@ -205,9 +205,11 @@ nav{
 nav div:last-child {
     margin-right:0;
 }
+.menu, .tab, .iframe , fieldset.sf-settings{
+    width: 100%;
+}
 .menu {
     position: absolute;
-    width: 100%;
     height: 36px;
     top:119px;
     line-height: 36px; /*height*/
@@ -313,9 +315,7 @@ nav div:last-child {
 .tabs>ul a:hover{
     background-color: #4c4c4c;
 }
-
 .tab {
-    width: 100%;
     min-height: 700px;
     background: #EBEBEB;
     position: relative;
@@ -357,7 +357,6 @@ nav div:last-child {
     height: 1000px;
 }
 .iframe {
-    width: 100%;
     height: inherit;
     padding-bottom: 16px;
 }
@@ -385,10 +384,8 @@ form[name~="frmSettings"] {
 }
 fieldset.sf-settings {
     position: relative;
-    width: 100%;
     height: 46px;
     background-color: #DCDADA;
-    margin-bottom: 16px;
     padding: 7px 1.5151515%;
     font-size: .9rem;
 }
