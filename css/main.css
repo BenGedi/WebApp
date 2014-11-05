@@ -347,8 +347,10 @@ nav div:last-child {
     right: 0;
     border: none;
 }
-.reports-options-buttons a:hover, .reports-options-buttons button:hover,.reports-options-buttons .active{
+.reports-options-buttons a:hover, .reports-options-buttons button:hover,
+.reports-options-buttons .active{
     background-color: white;
+    outline: none;
 }
 .reports-content {
     margin: 0 16px;
