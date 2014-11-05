@@ -306,14 +306,15 @@ nav div:last-child {
     font-size: .8rem;
     background-color: #646464;
 }
-.tab-active a,.tab-active a:hover{
+.tab-active,.tab-active:hover{
     background-color:#EBEBEB !important;
     color: #333333 !important;
 }
 .tabs>ul a:hover{
     background-color: #4c4c4c;
 }
-.tab-content{
+
+.tab {
     width: 100%;
     height: auto;
     background: #EBEBEB;
@@ -324,7 +325,7 @@ nav div:last-child {
     width: 80px;
     height: 40px;
     display: inline-block;
-    top: 20px;
+    top: 18px;
     right: 16px;
 }
 .reports-options-buttons a {
@@ -358,19 +359,111 @@ nav div:last-child {
     height: inherit;
     padding-bottom: 16px;
 }
-.settings{
+/*
+ * Settings
+ */
+.settings {
     position: absolute;
     background: white;
     right: 16px;
     left: 16px;
-    top: 60px;
+    top: 58px;
     max-width: 1240px;
     height: 260px;
     overflow: hidden;
-    -webkit-box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 0.9);
-    -moz-box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 0.9);
-    box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 0.9);
+    -webkit-box-shadow: 0px 2px 6px 2px rgba(50, 50, 50, 0.3);
+    -moz-box-shadow: 0px 2px 6px 2px rgba(50, 50, 50, 0.3);
+    box-shadow: 0px 2px 6px 2px rgba(50, 50, 50, 0.3);
 }
+form[name~="frmSettings"] {
+    width: inherit;
+    height: 100%;
+    padding: 1.515151515%;
+    position: relative;
+}
+fieldset.sf-settings {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    background-color: #DCDADA;
+    margin-bottom: 16px;
+    padding: 7px 1.5151515%;
+    font-size: .9rem;
+}
+.setting--report-num {
+    position: absolute;
+    top: 15px;
+}
+.frmSettings-inputWraper {
+    position: absolute;
+    height: 36px;
+    direction: rtl;
+}
+.frmSettings-label {
+    position: absolute;
+    top: 21%;
+}
+.frmName {
+    width: 37%;
+    left: 16%;
+}
+.frmUrl {
+    width: 43%;
+    left: 55.5%;
+}
+.frmSettings-input {
+    height: 32px;
+    position: inherit;
+    direction: ltr;
+    border: none;
+    padding: 0 4%;
+    font-size: .8rem;
+}
+input.frmSettings-input:hover, input.frmSettings-input:focus {
+    border: 1px solid #b4b4b4;
+}
+.frmName .frmSettings-input {
+    width: 76%;
+    left: 24%;
+}
+.frmUrl .frmSettings-input {
+    left: 15%;
+    width: 85%;
+}
+.frmName .frmSettings-label {
+    right: 78%;
+}
+.frmUrl .frmSettings-label {
+    right: 87%;
+}
+.frmSettings-footer {
+    float: right;
+    font-size: .9rem;
+}
+.frmSettings-footer input[type="submit"] {
+    background-color: black;
+    color: white;
+    border: 0;
+    width: 100px;
+    height: 30px;
+}
+.frmSettings-footer input[type="submit"]:hover,
+.frmSettings-footer input[type="submit"]:focus,
+.frmSettings-footer input[type="submit"]:active {
+    border: 1px solid #b4b4b4;
+}
+.frmSettings-footer a {
+    margin-right: 15px;
+    color: black;
+}
+.frmSettings-footer a:hover, .frmSettings-footer a:focus, .frmSettings-footer a:active {
+    color: red;
+}
+
+/*
+ * My folder tab
+ */
+
 
 
 /* ==========================================================================

@@ -97,10 +97,10 @@
 
                 <div class="tabs">
                     <ul>
-                        <li class="tab-active"><a tabindex="1" href="#quick-reports">
+                        <li><a class="tab-active" tabindex="1" href="#quick-reports">
                             <i class="fa fa-external-link"></i> Quick Reports</a>
                         </li>
-                        <li><a tabindex="2" href="#fmy-folders">
+                        <li><a  tabindex="2" href="#fmy-folders">
                             <i class="fa fa-star-o"></i> My Folders</a>
                         </li>
                         <li><a tabindex="3" href="#my-team-folders">
@@ -111,7 +111,7 @@
                         </li>
                     </ul>
 
-                    <div class="tab-content" id="quick-reports">
+                    <div class="reports-wraper tab" id="quick-reports">
                         <div class="reports-options">
                             <select class="bookmarks" name="bookmarks" id="bookmarks">
                                 <option value="netcraft" selected>Netcraft</option>
@@ -124,33 +124,43 @@
                             </div>
                             <div id="settings" class="settings hidden">
                                 <form name="frmSettings" method="get" action="#!">
-                                    <fieldset class="frmSettings-fieldset">
+                                    <fieldset class="sf-settings">
                                         <span class="setting--report-num">Reprot 01</span>
-                                        <div class="frmSettings-name">
-                                            <label class="frmSettings-label" for="name">Name:</label>
+                                        <div class="frmSettings-inputWraper frmName">
                                             <input class="frmSettings-input" type="text" id="name">
+                                            <label class="frmSettings-label" for="name">Name</label>
                                         </div>
-                                        <div class="frmSettings-url">
-                                            <label class="frmSettings-label" for="url">URL:</label>
+                                        <div class="frmSettings-inputWraper frmUrl">
                                             <input class="frmSettings-input" type="url" id="url">
+                                            <label class="frmSettings-label" for="url">URL</label>
                                         </div>
                                     </fieldset>
-                                    <fieldset>
-                                        <span>Reprot 02</span>
-                                        <label for="name">Name:</label>
-                                        <input type="text" id="name">
-                                        <label for="url">URL:</label>
-                                        <input type="url" id="url">
+                                    <fieldset class="sf-settings">
+                                        <span class="setting--report-num">Reprot 02</span>
+                                        <div class="frmSettings-inputWraper frmName">
+                                            <input class="frmSettings-input" type="text" id="name">
+                                            <label class="frmSettings-label" for="name">Name</label>
+                                        </div>
+                                        <div class="frmSettings-inputWraper frmUrl">
+                                            <input class="frmSettings-input" type="url" id="url">
+                                            <label class="frmSettings-label" for="url">URL</label>
+                                        </div>
                                     </fieldset>
-                                    <fieldset>
-                                        <span>Reprot 03</span>
-                                        <label for="name">Name:</label>
-                                        <input type="text" id="name">
-                                        <label for="url">URL:</label>
-                                        <input type="url" id="url">
+                                    <fieldset class="sf-settings">
+                                        <span class="setting--report-num">Reprot 03</span>
+                                        <div class="frmSettings-inputWraper frmName">
+                                            <input class="frmSettings-input" type="text" id="name">
+                                            <label class="frmSettings-label" for="name">Name</label>
+                                        </div>
+                                        <div class="frmSettings-inputWraper frmUrl">
+                                            <input class="frmSettings-input" type="url" id="url">
+                                            <label class="frmSettings-label" for="url">URL</label>
+                                        </div>
                                     </fieldset>
-                                    <a href="#!">Cancel</a>
-                                    <input type="submit" id="submit" value="Save">
+                                    <div class="frmSettings-footer">
+                                        <a href="#!">Cancel</a>
+                                        <input type="submit" id="submit" value="Save">
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -159,13 +169,16 @@
                         </div>
                     </div>
 
-                    <div id="fmy-folders">
+                    <div class="folders-wraper tab hidden" id="fmy-folders">
+                        <div>My Folder</div>
                     </div>
 
-                    <div id="my-team-folders">
+                    <div class="team-folders-wraper tab hidden" id="my-team-folders">
+                        <div>My Team Folders</div>
                     </div>
 
-                    <div id="public-folders">
+                    <div class="public-folders-wraper tab hidden" id="public-folders">
+                        <div>Public Folders</div>
                     </div>
                 </div>
             </div>
