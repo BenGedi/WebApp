@@ -34,7 +34,7 @@
             </header>
 
             <div class="page-body layout-wrap">
-                <div class="notifications">notification text here</div>
+                <div class="notifications"></div>
 
                 <nav>
                     <div class="nav-section feature-reports">
@@ -113,16 +113,16 @@
 
                     <div class="reports-wraper tab" id="quick-reports">
                         <div class="reports-options">
-                            <select class="bookmarks" name="bookmarks" id="bookmarks">
+                            <select class="bookmarks hidden" name="bookmarks" id="bookmarks">
                                 <option value="netcraft" selected>Netcraft</option>
                                 <option value="ynet">Ynet</option>
                                 <option value="google">Google</option>
                             </select>
                             <div class="reports-options-buttons">
-                                <a class="btn-expand" href="#">expand</a>
-                                <button class="btn-settings" id="btn-settings">settings</button>
+                                <a class="btn-expand hidden" href="#">expand</a>
+                                <button class="btn-settings active" id="btn-settings">settings</button>
                             </div>
-                            <div id="settings" class="settings hidden">
+                            <div id="settings" class="settings">
                                 <form name="frmSettings" method="get" action="#!">
                                     <fieldset class="sf-settings">
                                         <span class="setting--report-num">Reprot 01</span>
@@ -164,7 +164,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="reports-content">
+                        <div class="reports-content hidden">
                             <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
                         </div>
                     </div>
