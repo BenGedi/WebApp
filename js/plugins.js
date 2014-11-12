@@ -195,6 +195,24 @@ var UTILS = (function () {
 
             // Fire the request
             xhr.send(null);
+        },
+        hasClass: function(tab,className) {
+            var classes = tab.getAttribute('class').split(' ');
+            for (var i = 0; i < classes.length; i++) {
+                if (classes[i] === className){
+                    return true;
+                }
+            }
+            return false;
+        },
+        addClass: function(node,className){
+            var classes = node.getAttribute('class');
+            if (classes ===''){
+                node.className = className;
+            }
+            else{
+                node.className = node.className + className;
+            }
         }
     };
 }());

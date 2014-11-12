@@ -1,7 +1,9 @@
+/* global UTILS */
 window.onload = (function() {
     var TabsCollection = document.querySelectorAll('.tabs a'),
         TabsContentCollection = document.querySelectorAll('.tab'),
         notification = UTILS.qs('.notifications');
+
 
         notification.classList.add('hidden');
 
@@ -12,26 +14,28 @@ window.onload = (function() {
                         }
                     }
                 };
+
     var tabActiveContent = function(tabsContent){
-        for (var i = 0; i < tabsContent.length; i++) {
-            if(tabsContent[i].classList.contains('hidden')){
-                continue;
+            for (var i = 0; i < tabsContent.length; i++) {
+                if(tabsContent[i].classList.contains('hidden')){
+                    continue;
+                }
+                else{
+                    return tabsContent[i];
+                }
             }
-            else{
-                return tabsContent[i];
-            }
-        }
-    };
+        };
+
     var getAtagByHash = function(hash){
-        for (var i = 0; i < TabsCollection.length; i++) {
-            if (TabsCollection[i].hash === ("#"+hash)){
-                return TabsCollection[i];
+            for (var i = 0; i < TabsCollection.length; i++) {
+                if (TabsCollection[i].hash === ("#"+hash)){
+                    return TabsCollection[i];
+                }
             }
-        }
-    };
+        };
     var settingsBtnCheck = function(e){
         var target = e ? e.target : window.event.srcElement;
-        var hasActive = target.classList.contains('active');
+        var hasActive = UTILS.hasClass(target,'active');
         var setting = document.getElementById('settings');
         if(hasActive){
             target.classList.remove('active');
@@ -42,7 +46,10 @@ window.onload = (function() {
             setting.classList.remove('hidden');
         }
     };
-
+    var urlJumpFix = function (tab){
+        var  urlTarget = tab.getAttribute('href');
+        window.location.hash = 'panel-' + urlTarget.replace('#','');
+    };
 
 
     /*
@@ -54,15 +61,18 @@ window.onload = (function() {
     * 2. addEventListener('hashchange' , checkHash)
     */
     var checkHash = function(e){
-        if (e.newURL || e.path.length !== 0){
+        if (e.path.length !== 0 || e.newURL !== undefined){
            e.preventDefault();
            // variable "that" checking if "e" is a window event
            // yes: that gets window new url.
            // no: that gets the targeted a tab element.
            var that = e.newURL ? e.newURL : e.currentTarget.href;
-
+           var thatHashIndex = that.indexOf('#')+1;
+           var thatHash = that.slice(thatHashIndex);
+           var targetHashIndex = currentTab.href.indexOf('#')+1;
+           var targetHash = 'panel-' + currentTab.href.slice(targetHashIndex);
            // checking if user press on an active tab or refreshed the same url + #id
-           if (currentTab === that || that === currentTab.href){
+           if ((currentTab === that || that === currentTab.href)||(thatHash === targetHash)){
                return false;
            }
 
@@ -77,12 +87,12 @@ window.onload = (function() {
                 showTabContent = document.getElementById(clickedView[1]),
                 // aTag is the tab target
                 aTag = getAtagByHash(clickedView[1]);
+                location.hash = 'panel-' + clickedView[1];
                 // activate target tab
                 aTag.classList.add('tab-active');
                 showTabContent.classList.remove('hidden');
                 currentTab = aTag; // initialize current tab
                 currentTabContent = showTabContent; // initialize current tab
-                location.hash = clickedView[1];
             }
         }
         else{
@@ -101,7 +111,10 @@ window.onload = (function() {
     // window.addEventListener('load' ,function(){
     //     window.dispatchEvent(new Event("hashchange"));
     // });
-    UTILS.addEvent(window,'load',dispatchEvt);
+    // UTILS.addEvent(window,'load',dispatchEvt);
+    for (var i = 0; i < TabsCollection.length; i++) {
+        UTILS.addEvent(TabsCollection[i],'click',checkHash);
+    }
     UTILS.ajax('../data/notification.txt', {
         done: function(response) {
             notification.classList.remove('hidden');
@@ -111,8 +124,5 @@ window.onload = (function() {
             console.log(err);
         }
     });
-    for (i=0;i<TabsCollection.length;i++) {
-        UTILS.addEvent(TabsCollection[i],'click',checkHash);
-    }
 })();
 
