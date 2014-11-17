@@ -99,8 +99,9 @@ textarea {
 * {
     box-sizing: border-box;
 }
-*:focus{
-    outline: 2px solid rgb(53, 144, 255);
+body :focus {
+    background: rgb(255, 209, 84) !important;
+    outline: none!important;
 }
 html{
     font-family: 'Open Sans', sans-serif;
@@ -462,7 +463,7 @@ input.frmSettings-input:hover, input.frmSettings-input:focus {
     color: red;
 }
 
-.noValid{
+.invalid{
     border: 1px solid red!important;
 }
 

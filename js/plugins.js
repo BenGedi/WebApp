@@ -47,6 +47,7 @@ var UTILS = (function () {
                 return false;
             }
         },
+        
         hasClass: function(tab,className) {
             var classes = tab.getAttribute('class').split(' ');
             for (var i = 0; i < classes.length; i++) {
@@ -56,17 +57,24 @@ var UTILS = (function () {
             }
             return false;
         },
-        addClass: function(node,className){
+
+        addClass: function(node,clsName){
+            debugger
             var classes = node.getAttribute('class');
             if(classes === undefined){
                 node.setAttribute('class','');
             }
             if (classes ===''){
-                node.className = className;
+                node.className = clsName;
             }
             else{
-                node.className = node.className + className;
+                node.className = node.className +" "+ clsName;
             }
+        },
+
+        removeClass: function(node, clsName) {
+          var regex = new RegExp('\\b' + clsName + '\\b');
+          node.className = node.className.replace(regex,'');
         },
 
         /**

@@ -2,8 +2,8 @@
 window.onload = (function() {
     var TabsCollection = document.querySelectorAll('.tabs a'),
         TabsContentCollection = document.querySelectorAll('.tab'),
-        inputTypeText = UTILS.qsa('input[type="text"]'),
-        inputTypeUrl = UTILS.qsa('inputTypeUrl'),
+        inputTypeText = UTILS.qsa('.frmSettings input[type="text"]'),
+        inputTypeUrl = UTILS.qsa('.frmSettings input[type="url"]'),
         notification = UTILS.qs('.notifications');
 
 
@@ -49,24 +49,35 @@ window.onload = (function() {
         }
     };
 
+    // not in use yet
     var urlJumpFix = function (tab){
         var  urlTarget = tab.getAttribute('href');
         window.location.hash = 'panel-' + urlTarget.replace('#','');
     };
 
-    var formValidation = function(){
+    // url validation will be added after regex
+
+    var form = UTILS.qsa('.frmSettings');
+    var formValidation = function(e){
+        e.preventDefault();
         var arrInvalidFieldset =[];
         for (var i = 0; i < inputTypeText.length; i++) {
+            debugger
             if(inputTypeText[i].value !== "" && inputTypeUrl[i].value === ""){
-                UTILS.addClass(inputTypeText[i],"noValid");
-                arrInvalidFieldset.add(inputTypeText[i]);
+                UTILS.addClass(inputTypeUrl[i],"invalid");
+                arrInvalidFieldset.push(inputTypeUrl[i]);
+                continue;
             }
             else if (inputTypeText[i].value === "" && inputTypeUrl[i].value !== "") {
-                UTILS.addClass(inputTypeUrl[i],"noValid");
-                arrInvalidFieldset.add(inputTypeText[i]);
+                UTILS.addClass(inputTypeText[i],"invalid");
+                arrInvalidFieldset.push(inputTypeText[i]);
+                continue;
             }
-            else{
-                emptySetfieldCounter++;
+            if (UTILS.hasClass(inputTypeText[i],'invalid')){
+                UTILS.removeClass(inputTypeText[i],'invalid');
+            }
+            if (UTILS.hasClass(inputTypeUrl[i],'invalid')){
+                UTILS.removeClass(inputTypeUrl[i],'invalid');
             }
         }
         if(arrInvalidFieldset.length !==0){
@@ -74,9 +85,11 @@ window.onload = (function() {
             return false;
         }
         else{
-            return true;
+            return false; //just for testing, after QA will be true
         }
     };
+
+    UTILS.addEvent(form[0],'submit',formValidation);
 
     /*
     * checkHash function is adding and removing classes
