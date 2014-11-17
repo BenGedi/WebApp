@@ -1,7 +1,7 @@
 /* global UTILS */
 window.onload = (function() {
-    var TabsCollection = document.querySelectorAll('.tabs a'),
-        TabsContentCollection = document.querySelectorAll('.tab'),
+    var TabsCollection = UTILS.qsa('.tabs a'),
+        TabsContentCollection = UTILS.qsa('.tab'),
         inputTypeText = UTILS.qsa('.frmSettings input[type="text"]'),
         inputTypeUrl = UTILS.qsa('.frmSettings input[type="url"]'),
         notification = UTILS.qs('.notifications');
