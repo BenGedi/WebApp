@@ -2,6 +2,8 @@
 window.onload = (function() {
     var TabsCollection = document.querySelectorAll('.tabs a'),
         TabsContentCollection = document.querySelectorAll('.tab'),
+        inputTypeText = qsa('input[type="text"]'),
+        inputTypeUrl = qsa('inputTypeUrl'),
         notification = UTILS.qs('.notifications');
 
 
@@ -46,11 +48,22 @@ window.onload = (function() {
             setting.classList.remove('hidden');
         }
     };
+
     var urlJumpFix = function (tab){
         var  urlTarget = tab.getAttribute('href');
         window.location.hash = 'panel-' + urlTarget.replace('#','');
     };
 
+    var formValidation = function(){
+        for (var i = 0; i < inputTypeText.length; i++) {
+            if(inputTypeText[i].value !== "" && inputTypeUrl[i].value === ""){
+                UTILS.addClass(inputTypeText[i],"noValid");
+            }
+            else if (inputTypeText[i].value === "" && inputTypeUrl[i].value !== "") {
+                UTILS.addClass(inputTypeUrl[i],"noValid");
+            }
+        }
+    };
 
     /*
     * checkHash function is adding and removing classes
