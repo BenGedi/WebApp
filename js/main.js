@@ -2,8 +2,8 @@
 window.onload = (function() {
     var TabsCollection = document.querySelectorAll('.tabs a'),
         TabsContentCollection = document.querySelectorAll('.tab'),
-        inputTypeText = qsa('input[type="text"]'),
-        inputTypeUrl = qsa('inputTypeUrl'),
+        inputTypeText = UTILS.qsa('input[type="text"]'),
+        inputTypeUrl = UTILS.qsa('inputTypeUrl'),
         notification = UTILS.qs('.notifications');
 
 
@@ -55,13 +55,26 @@ window.onload = (function() {
     };
 
     var formValidation = function(){
+        var arrInvalidFieldset =[];
         for (var i = 0; i < inputTypeText.length; i++) {
             if(inputTypeText[i].value !== "" && inputTypeUrl[i].value === ""){
                 UTILS.addClass(inputTypeText[i],"noValid");
+                arrInvalidFieldset.add(inputTypeText[i]);
             }
             else if (inputTypeText[i].value === "" && inputTypeUrl[i].value !== "") {
                 UTILS.addClass(inputTypeUrl[i],"noValid");
+                arrInvalidFieldset.add(inputTypeText[i]);
             }
+            else{
+                emptySetfieldCounter++;
+            }
+        }
+        if(arrInvalidFieldset.length !==0){
+            arrInvalidFieldset[0].focus();
+            return false;
+        }
+        else{
+            return true;
         }
     };
 
@@ -128,6 +141,13 @@ window.onload = (function() {
     for (var i = 0; i < TabsCollection.length; i++) {
         UTILS.addEvent(TabsCollection[i],'click',checkHash);
     }
+
+
+    /*================================================
+    AJAX NOTIFICATION.
+    ================================================*/
+    
+    // Display an ajax notification using UTILS.ajax.
     UTILS.ajax('../data/notification.txt', {
         done: function(response) {
             notification.classList.remove('hidden');

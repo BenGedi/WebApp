@@ -38,6 +38,37 @@ var UTILS = (function () {
             return document.querySelectorAll(selector);
         },
 
+        // Validate enter or space keypress, and activate a function.
+        isEnterOrSpace: function(e) {
+            if (e.which === 13 || e.keyCode === 13 || e.which === 32 || e.keyCode === 32) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        hasClass: function(tab,className) {
+            var classes = tab.getAttribute('class').split(' ');
+            for (var i = 0; i < classes.length; i++) {
+                if (classes[i] === className){
+                    return true;
+                }
+            }
+            return false;
+        },
+        addClass: function(node,className){
+            var classes = node.getAttribute('class');
+            if(classes === undefined){
+                node.setAttribute('class','');
+            }
+            if (classes ===''){
+                node.className = className;
+            }
+            else{
+                node.className = node.className + className;
+            }
+        },
+
         /**
          * Cross browser even handler
          *
@@ -196,23 +227,5 @@ var UTILS = (function () {
             // Fire the request
             xhr.send(null);
         },
-        hasClass: function(tab,className) {
-            var classes = tab.getAttribute('class').split(' ');
-            for (var i = 0; i < classes.length; i++) {
-                if (classes[i] === className){
-                    return true;
-                }
-            }
-            return false;
-        },
-        addClass: function(node,className){
-            var classes = node.getAttribute('class');
-            if (classes ===''){
-                node.className = className;
-            }
-            else{
-                node.className = node.className + className;
-            }
-        }
     };
 }());

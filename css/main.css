@@ -462,6 +462,10 @@ input.frmSettings-input:hover, input.frmSettings-input:focus {
     color: red;
 }
 
+.noValid{
+    border: 1px solid red!important;
+}
+
 /*
  * My folder tab
  */
