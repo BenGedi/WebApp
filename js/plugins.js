@@ -47,7 +47,7 @@ var UTILS = (function () {
                 return false;
             }
         },
-        
+
         hasClass: function(tab,className) {
             var classes = tab.getAttribute('class').split(' ');
             for (var i = 0; i < classes.length; i++) {
@@ -163,6 +163,90 @@ var UTILS = (function () {
         },
 
         /**
+         * Check if Event constructors are supported
+         *
+         * @return {Boolean}
+         */
+        isModernEvent: function () {
+            try {
+                if (new Event('submit', {bubbles: false}).bubbles !== false) {
+                    return false;
+                } else if (new Event('submit', {bubbles: true}).bubbles !== true) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } catch (e) {
+                return false;
+            }
+        },
+
+        /**
+         * Trigger an event on a specific element
+         *
+         * Note:
+         * - bubbles/cancelable - `false` by default (not supported in IE8)
+         *
+         * @param  {Object} elm      DOM Node
+         * @param  {string} type     Event type (e.g. 'click', 'customEvent')
+         * @param  {Object} options  Options object (e.g. bubbles, cancelable)
+         */
+        emitEvent: function (elm, type, options) {
+            var evt,
+                bubbles,
+                cancelable,
+                // Will be used as a fallback event object for IE8
+                eFallback;
+
+            // Support Event options
+            options = options || {};
+            bubbles = options.bubbles !== undefined ? options.bubbles : false;
+            cancelable = options.cancelable !== undefined ? options.cancelable : false;
+
+            // Create an event object
+            // Modern browsers (except IE Any)
+            if (UTILS.isModernEvent()) {
+                evt = new Event(type, {
+                    bubbles: bubbles,
+                    cancelable: cancelable
+                });
+            // IE 9+
+            } else if (document.createEvent) {
+                evt = document.createEvent('Event');
+                evt.initEvent(type, bubbles, cancelable);
+            // IE 8
+            } else {
+                evt = document.createEventObject();
+            }
+
+            // Trigger the event
+            // Modern browsers and IE9+
+            if (elm.dispatchEvent) {
+                elm.dispatchEvent(evt);
+            // IE8
+            } else if (elm.fireEvent) {
+                // `fireEvent` will fail on non real events (i.e. custom events)
+                try {
+                    elm.fireEvent('on' + type, evt);
+                } catch (e) {
+                    // If we have any event handlers saved during `addEvent`
+                    if (elm._events && elm._events[type]) {
+                        // Support minimal Event properties
+                        eFallback = {
+                            target: elm,
+                            currentTarget: elm
+                        };
+
+                        // Trigger all event handlers for this event type
+                        for (var i = 0; i < elm._events[type].length; i++) {
+                            elm._events[type][i].call(elm, eFallback);
+                        }
+                    }
+                }
+            }
+        },
+
+        /**
          * AJAX helper function (similar to jQuery, but far from it!)
          *
          * @param {string} url     URL for the ajax request
@@ -170,7 +254,7 @@ var UTILS = (function () {
          */
         ajax: function (url, options) {
             var xhr = new XMLHttpRequest(),
-                method = 'GET',
+                method = 'GET';
                 options = UTILS.isObject(options) ? options : {};
 
             // Check if "method" was supplied
