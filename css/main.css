@@ -100,7 +100,7 @@ textarea {
     box-sizing: border-box;
 }
 body :focus {
-    background: rgb(255, 209, 84) !important;
+    background-color: rgb(255, 209, 84) !important;
     outline: none!important;
 }
 html{

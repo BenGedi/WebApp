@@ -73,6 +73,10 @@ window.onload = (function() {
                 arrInvalidFieldset.push(inputTypeText[i]);
                 continue;
             }
+            else if(inputTypeText[i].value !== "" && inputTypeUrl[i].value !== ""){
+
+            }
+
             if (UTILS.hasClass(inputTypeText[i],'invalid')){
                 UTILS.removeClass(inputTypeText[i],'invalid');
             }
@@ -159,7 +163,7 @@ window.onload = (function() {
     /*================================================
     AJAX NOTIFICATION.
     ================================================*/
-    
+
     // Display an ajax notification using UTILS.ajax.
     UTILS.ajax('../data/notification.txt', {
         done: function(response) {
