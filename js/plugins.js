@@ -59,7 +59,6 @@ var UTILS = (function () {
         },
 
         addClass: function(node,clsName){
-            debugger
             var classes = node.getAttribute('class');
             if(classes === undefined){
                 node.setAttribute('class','');
@@ -112,7 +111,7 @@ var UTILS = (function () {
                         e.cancelBubble = true;
                     };
 
-                    e.preventDefault = e.preventDefault || function () {
+                    e.preventDefault = e.preventDefault() || function () {
                         e.returnValue = false;
                     };
 
