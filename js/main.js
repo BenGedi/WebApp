@@ -4,10 +4,10 @@ window.onload = (function() {
         TabsContentCollection = UTILS.qsa('.tab'),
         inputTypeText = UTILS.qsa('.frmSettings input[type="text"]'),
         inputTypeUrl = UTILS.qsa('.frmSettings input[type="url"]'),
-        notification = UTILS.qs('.notifications');
-
-
-        notification.classList.add('hidden');
+        notification = UTILS.qs('.notifications'),
+        // iExpand
+        bookmarks = UTILS.qsa('.bookmarks');
+        UTILS.addClass(notification,'hidden');
 
     var tabActive = function(tabs){
                     for(var i = 0; i< tabs.length ;i++){
@@ -54,15 +54,26 @@ window.onload = (function() {
         var  urlTarget = tab.getAttribute('href');
         window.location.hash = 'panel-' + urlTarget.replace('#','');
     };
-
+    var addOptionToSelect = function(selectElement ,name,url){
+        var option = document.createElement('OPTION');
+        option.setAttribute('value',url);
+        option.innerText = name;
+        selectElement.appendChild(option);
+    };
     // url validation will be added after regex
-
-    var form = UTILS.qsa('.frmSettings');
+    var removeChildsElements = function(myNode){
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+    };
+    var forms = UTILS.qsa('.frmSettings');
     var formValidation = function(e){
+        console.log(e);
         e.preventDefault();
+        var activeBookmark = e.path[3].id === "tab-quick-reports" ? 0 : 1 ;
         var arrInvalidFieldset =[];
+        removeChildsElements(bookmarks[activeBookmark]);
         for (var i = 0; i < inputTypeText.length; i++) {
-            debugger
             if(inputTypeText[i].value !== "" && inputTypeUrl[i].value === ""){
                 UTILS.addClass(inputTypeUrl[i],"invalid");
                 arrInvalidFieldset.push(inputTypeUrl[i]);
@@ -74,7 +85,10 @@ window.onload = (function() {
                 continue;
             }
             else if(inputTypeText[i].value !== "" && inputTypeUrl[i].value !== ""){
-
+                addOptionToSelect(bookmarks[activeBookmark],inputTypeText[i].value,inputTypeUrl[i].value);
+                if(UTILS.hasClass(bookmarks[activeBookmark],'hidden')){
+                    UTILS.removeClass(bookmarks[activeBookmark],'hidden');
+                }
             }
 
             if (UTILS.hasClass(inputTypeText[i],'invalid')){
@@ -89,11 +103,15 @@ window.onload = (function() {
             return false;
         }
         else{
-            return false; //just for testing, after QA will be true
+            UTILS.emitEvent(document.getElementById('btn-settings'),'click',settingsBtnCheck);
+            bookmarks[activeBookmark].focus();
+            return true; //just for testing, after QA will be true
         }
     };
 
-    UTILS.addEvent(form[0],'submit',formValidation);
+        UTILS.addEvent(forms[0],'submit',formValidation);
+
+
 
     /*
     * checkHash function is adding and removing classes
@@ -104,7 +122,7 @@ window.onload = (function() {
     * 2. addEventListener('hashchange' , checkHash)
     */
     var checkHash = function(e){
-        if (e.path.length !== 0 || e.newURL !== undefined){
+        // if (e.path.length !== 0 || e.newURL !== undefined){
            e.preventDefault();
            // variable "that" checking if "e" is a window event
            // yes: that gets window new url.
@@ -113,7 +131,7 @@ window.onload = (function() {
            var thatHashIndex = that.indexOf('#')+1;
            var thatHash = that.slice(thatHashIndex);
            var targetHashIndex = currentTab.href.indexOf('#')+1;
-           var targetHash = 'panel-' + currentTab.href.slice(targetHashIndex);
+           var targetHash = currentTab.href.slice(targetHashIndex);
            // checking if user press on an active tab or refreshed the same url + #id
            if ((currentTab === that || that === currentTab.href)||(thatHash === targetHash)){
                return false;
@@ -127,24 +145,21 @@ window.onload = (function() {
            if (that.indexOf("#") !== -1) {
                 var clickedHREF = that,
                 clickedView = clickedHREF.split("#"),
-                showTabContent = document.getElementById(clickedView[1]),
+                showTabContent = document.getElementById('tab-'+clickedView[1]),
                 // aTag is the tab target
                 aTag = getAtagByHash(clickedView[1]);
-                location.hash = 'panel-' + clickedView[1];
+                location.hash = clickedView[1];
                 // activate target tab
                 aTag.classList.add('tab-active');
                 showTabContent.classList.remove('hidden');
                 currentTab = aTag; // initialize current tab
                 currentTabContent = showTabContent; // initialize current tab
             }
-        }
+        // }
         else{
             return false;
         }
     };
-    var dispatchEvt = function(){
-                window.dispatchEvent(new Event("hashchange"));
-            };
 
     var currentTabContent = tabActiveContent(TabsContentCollection),
         currentTab = tabActive(TabsCollection),
@@ -155,6 +170,7 @@ window.onload = (function() {
     //     window.dispatchEvent(new Event("hashchange"));
     // });
     // UTILS.addEvent(window,'load',dispatchEvt);
+    // UTILS.emitEvent(window , 'load', new Event("hashchange"));
     for (var i = 0; i < TabsCollection.length; i++) {
         UTILS.addEvent(TabsCollection[i],'click',checkHash);
     }

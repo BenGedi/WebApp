@@ -130,6 +130,7 @@ select{
     height: 35px;
     padding-left: 16px;
     margin: 16px;
+    position: absolute;;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
