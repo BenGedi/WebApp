@@ -111,7 +111,7 @@ var UTILS = (function () {
                         e.cancelBubble = true;
                     };
 
-                    e.preventDefault = e.preventDefault() || function () {
+                    e.preventDefault = e.preventDefault || function () {
                         e.returnValue = false;
                     };
 
