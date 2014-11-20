@@ -317,7 +317,7 @@ nav div:last-child {
     background-color: #4c4c4c;
 }
 .tab {
-    min-height: 700px;
+    min-height: 364px;
     background: #EBEBEB;
     position: relative;
 }
@@ -353,14 +353,22 @@ nav div:last-child {
     background-color: white;
     outline: none;
 }
-
-.reports-content {
+.reports-content,.folder-content {
     margin: 0 16px;
+}
+.reports-content{
     height: 1000px;
 }
 
+.folder-content {
+    padding-top: 74px;
+    height: 1073px;
+}
+.folders-wraper .reports-options-buttons a.btn-expand {
+    right: 0;
+}
 .iframe {
-    height: inherit;
+    height: 100%;
     padding-bottom: 16px;
 }
 
@@ -368,11 +376,12 @@ nav div:last-child {
  * Settings
  */
 .settings {
-    position: absolute;
+    position: relative;
     background: white;
     right: 16px;
-    left: 16px;
+    left: 0;
     top: 58px;
+    margin: 0 16px;
     height: 260px;
     overflow: hidden;
     -webkit-box-shadow: 0px 2px 6px 2px rgba(50, 50, 50, 0.3);
