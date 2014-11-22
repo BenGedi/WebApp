@@ -439,24 +439,30 @@ input.frmSettings-input:hover, select.bookmarks:hover {
     border: none;
     outline: 1px solid #b4b4b4;
 }
+
 .frmName .frmSettings-input {
     width: 76%;
     left: 24%;
 }
+
 .frmUrl .frmSettings-input {
     left: 15%;
     width: 85%;
 }
+
 .frmName .frmSettings-label {
     right: 78%;
 }
+
 .frmUrl .frmSettings-label {
     right: 87%;
 }
+
 .frmSettings-footer {
     float: right;
     font-size: .9rem;
 }
+
 .frmSettings-footer input[type="submit"] {
     background-color: black;
     color: white;
@@ -464,6 +470,7 @@ input.frmSettings-input:hover, select.bookmarks:hover {
     width: 100px;
     height: 30px;
 }
+
 .frmSettings-footer input[type="submit"]:hover,
 .frmSettings-footer input[type="submit"]:focus,
 .frmSettings-footer input[type="submit"]:active {

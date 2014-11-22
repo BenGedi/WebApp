@@ -63,7 +63,9 @@ window.onload = (function() {
             myNode.removeChild(myNode.firstChild);
         }
     };
+
     var forms = UTILS.qsa('.frmSettings');
+
     var formValidation = function(e){
         console.log(e);
         e.preventDefault();
