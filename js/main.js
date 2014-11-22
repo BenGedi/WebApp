@@ -78,6 +78,7 @@ window.onload = (function() {
         var arrFormInputs = [inputTypeText,inputTypeText];
         var arrInvalidFieldset =[];
         removeChildsElements(bookmarks);
+
         for (var i = 0; i < inputTypeText.length; i++) {
             if(inputTypeText[i].value !== "" && inputTypeUrl[i].value === ""){
                 UTILS.addClass(inputTypeUrl[i],"invalid");

@@ -433,6 +433,7 @@ fieldset.sf-settings {
     padding: 0 4%;
     font-size: .8rem;
 }
+
 input.frmSettings-input:hover, select.bookmarks:hover {
     /*border: 1px solid #b4b4b4;*/
     border: none;
