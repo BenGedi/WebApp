@@ -25,10 +25,10 @@
         <!-- Add your site or application content here -->
         <header>
               <div class="layout-wrap">
-                <a href="#">netcraft<img src="https://googledrive.com/host/0B6ZIsommzsgVMVA2MzdKUjN2S0U/logo-netcraft.svg" alt="netcraft"></a>
+                <a href="#" tabindex="0">netcraft<img src="https://googledrive.com/host/0B6ZIsommzsgVMVA2MzdKUjN2S0U/logo-netcraft.svg" alt="netcraft"></a>
 
                 <form class="search-box" method="get" action="http://www.google.com">
-                    <input type="search" name="q" placeholder="search">
+                    <input type="search" name="q" placeholder="search" tabindex="0">
                 </form>
               </div>
             </header>
@@ -37,59 +37,59 @@
                 <div class="notifications"></div>
 
                 <nav>
-                    <div class="nav-section feature-reports">
+                    <div class="nav-section feature-reports" tabindex="0">
                         <p>Select<br>Reporting Platform</p>
 
-                        <div class="menu">
+                        <div class="menu" tabindex="0">
                             <div class="menu-hint">
                                 <p>Choose QS report</p>
                                 <div class="arrow"></div>
                             </div>
 
                             <ul class="action-list">
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="nav-section feature-dashboard">
+                    <div class="nav-section feature-dashboard" tabindex="0">
                         <p>Select<br>Dashboard</p>
 
-                        <div class="menu">
+                        <div class="menu" tabindex="0">
                             <div class="menu-hint">
                                 <p>Choose dashboard</p>
                                 <div class="arrow"></div>
                             </div>
 
                             <ul class="action-list">
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="nav-section feature-help">
+                    <div class="nav-section feature-help" tabindex="0">
                         <p>Help<br>&amp; Tutorials</p>
 
-                        <div class="menu">
+                        <div class="menu" tabindex="0">
                             <div class="menu-hint">
                                 <p>Choose guide</p>
                                 <div class="arrow"></div>
                             </div>
 
                             <ul class="action-list">
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
-                                <li><a href="#">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
+                                <li><a href="#" tabindex="0">link</a></li>
                             </ul>
                         </div>
                     </div>
@@ -97,71 +97,71 @@
 
                 <div class="tabs">
                     <ul>
-                        <li><a class="tab-active" tabindex="1" href="#quick-reports">
+                        <li><a class="tab-active" tabindex="0" href="#quick-reports">
                             <i class="fa fa-external-link"></i> Quick Reports</a>
                         </li>
-                        <li><a  tabindex="2" href="#fmy-folders">
+                        <li><a  tabindex="0" href="#fmy-folders">
                             <i class="fa fa-star-o"></i> My Folders</a>
                         </li>
-                        <li><a tabindex="3" href="#my-team-folders">
+                        <li><a tabindex="0" href="#my-team-folders">
                             <i class="fa fa-folder-open-o"></i> My Team Folders</a>
                         </li>
-                        <li><a tabindex="4" href="#public-folders">
+                        <li><a tabindex="0" href="#public-folders">
                             <i class="fa fa-file-o"></i> Public Folders</a>
                         </li>
                     </ul>
 
                     <div class="reports-wraper tab" id="tab-quick-reports">
                         <div class="reports-options">
-                            <select class="bookmarks hidden" name="bookmarks" id="bookmarks">
+                            <select class="bookmarks hidden" name="bookmarks" id="bookmarks-quick-reports" tabindex="0">
                             </select>
                             <div class="reports-options-buttons">
-                                <a class="btn-expand iExpand hidden" href="#" >expand</a>
-                                <button class="btn-settings active" id="btn-settings">settings</button>
+                                <a class="btn-expand hidden" href="#" id="expand-quick-reports" tabindex="0">expand</a>
+                                <button class="btn-settings active" id="btn-settings" tabindex="0">settings</button>
                             </div>
                             <div id="settings" class="settings">
                                 <form class="frmSettings" name="frmSettings" novalidate>
                                     <fieldset class="sf-settings">
                                         <span class="setting--report-num">Reprot 01</span>
                                         <div class="frmSettings-inputWraper frmName">
-                                            <input class="frmSettings-input" type="text" id="nameReport1">
+                                            <input class="frmSettings-input js-inputText" type="text" id="nameReport1">
                                             <label class="frmSettings-label" for="nameReport1">Name</label>
                                         </div>
                                         <div class="frmSettings-inputWraper frmUrl">
-                                            <input class="frmSettings-input" type="url" id="urlReport1">
+                                            <input class="frmSettings-input js-inputUrl" type="url" id="urlReport1">
                                             <label class="frmSettings-label" for="urlReport1">URL</label>
                                         </div>
                                     </fieldset>
                                     <fieldset class="sf-settings">
                                         <span class="setting--report-num">Reprot 02</span>
                                         <div class="frmSettings-inputWraper frmName">
-                                            <input class="frmSettings-input" type="text" id="nameReport2">
+                                            <input class="frmSettings-input js-inputText" type="text" id="nameReport2">
                                             <label class="frmSettings-label" for="nameReport2">Name</label>
                                         </div>
                                         <div class="frmSettings-inputWraper frmUrl">
-                                            <input class="frmSettings-input" type="url" id="urlReport2">
+                                            <input class="frmSettings-input js-inputUrl" type="url" id="urlReport2">
                                             <label class="frmSettings-label" for="urlReport2">URL</label>
                                         </div>
                                     </fieldset>
                                     <fieldset class="sf-settings">
                                         <span class="setting--report-num">Reprot 03</span>
                                         <div class="frmSettings-inputWraper frmName">
-                                            <input class="frmSettings-input" type="text" id="nameReport3">
+                                            <input class="frmSettings-input js-inputText" type="text" id="nameReport3">
                                             <label class="frmSettings-label" for="nameReport3">Name</label>
                                         </div>
                                         <div class="frmSettings-inputWraper frmUrl">
-                                            <input class="frmSettings-input" type="url" id="urlReport3">
+                                            <input class="frmSettings-input js-inputUrl" type="url" id="urlReport3">
                                             <label class="frmSettings-label" for="urlReport3">URL</label>
                                         </div>
                                     </fieldset>
                                     <div class="frmSettings-footer">
-                                        <a href="#">Cancel</a>
-                                        <input type="submit" id="submit" value="Save">
+                                        <a href="#" tabindex="0">Cancel</a>
+                                        <input type="submit" id="submit" value="Save" tabindex="0">
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="reports-content hidden">
+                        <div class="reports-content hidden" id="content-quick-reports">
                             <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="reports-content iExpand hidden">
+                        <div class="reports-content js-expand hidden">
                             <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
                         </div>
                     </div>

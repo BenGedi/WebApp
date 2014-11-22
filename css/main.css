@@ -356,6 +356,7 @@ nav div:last-child {
 }
 .reports-content,.folder-content {
     margin: 0 16px;
+    padding-top: 73px;
 }
 .reports-content{
     height: 1000px;
@@ -377,12 +378,12 @@ nav div:last-child {
  * Settings
  */
 .settings {
-    position: relative;
+    position: absolute;
     background: white;
     right: 16px;
     left: 0;
     top: 58px;
-    margin: 0 16px;
+    margin: 0 0 0 16px;
     height: 260px;
     overflow: hidden;
     -webkit-box-shadow: 0px 2px 6px 2px rgba(50, 50, 50, 0.3);
@@ -432,8 +433,10 @@ fieldset.sf-settings {
     padding: 0 4%;
     font-size: .8rem;
 }
-input.frmSettings-input:hover, input.frmSettings-input:focus {
-    border: 1px solid #b4b4b4;
+input.frmSettings-input:hover, select.bookmarks:hover {
+    /*border: 1px solid #b4b4b4;*/
+    border: none;
+    outline: 1px solid #b4b4b4;
 }
 .frmName .frmSettings-input {
     width: 76%;

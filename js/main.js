@@ -2,14 +2,11 @@
 window.onload = (function() {
     var TabsCollection = UTILS.qsa('.tabs a'),
         TabsContentCollection = UTILS.qsa('.tab'),
-        inputTypeText = UTILS.qsa('.frmSettings input[type="text"]'),
-        inputTypeUrl = UTILS.qsa('.frmSettings input[type="url"]'),
         notification = UTILS.qs('.notifications'),
-        // iExpand
-        bookmarks = UTILS.qsa('.bookmarks');
+        btnExpand , bookmarks ,tabContent , inputTypeText , inputTypeUrl;
         UTILS.addClass(notification,'hidden');
 
-    var tabActive = function(tabs){
+    var getActiveTab = function(tabs){
                     for(var i = 0; i< tabs.length ;i++){
                         if (tabs[i].classList.contains('tab-active')){
                             return tabs[i];
@@ -17,7 +14,7 @@ window.onload = (function() {
                     }
                 };
 
-    var tabActiveContent = function(tabsContent){
+    var getActiveTabContent = function(tabsContent){
             for (var i = 0; i < tabsContent.length; i++) {
                 if(tabsContent[i].classList.contains('hidden')){
                     continue;
@@ -70,9 +67,17 @@ window.onload = (function() {
     var formValidation = function(e){
         console.log(e);
         e.preventDefault();
-        var activeBookmark = e.path[3].id === "tab-quick-reports" ? 0 : 1 ;
+        var currentTabContentId = currentTabContent.id.slice(4);
+        inputTypeText = UTILS.qsa('.js-inputText');
+        inputTypeUrl = UTILS.qsa('.js-inputUrl');
+        bookmarks = UTILS.qs('#bookmarks-'+ currentTabContentId);
+        btnExpand = UTILS.qs('#expand-'+ currentTabContentId);
+        tabContent = UTILS.qs('#content-' + currentTabContentId);
+        var emptyfieldsetCounter = 0;
+        var arrToBeActive = [bookmarks,btnExpand,tabContent];
+        var arrFormInputs = [inputTypeText,inputTypeText];
         var arrInvalidFieldset =[];
-        removeChildsElements(bookmarks[activeBookmark]);
+        removeChildsElements(bookmarks);
         for (var i = 0; i < inputTypeText.length; i++) {
             if(inputTypeText[i].value !== "" && inputTypeUrl[i].value === ""){
                 UTILS.addClass(inputTypeUrl[i],"invalid");
@@ -85,33 +90,50 @@ window.onload = (function() {
                 continue;
             }
             else if(inputTypeText[i].value !== "" && inputTypeUrl[i].value !== ""){
-                addOptionToSelect(bookmarks[activeBookmark],inputTypeText[i].value,inputTypeUrl[i].value);
-                if(UTILS.hasClass(bookmarks[activeBookmark],'hidden')){
-                    UTILS.removeClass(bookmarks[activeBookmark],'hidden');
-                }
+                addOptionToSelect(bookmarks , inputTypeText[i].value , inputTypeUrl[i].value);
             }
-
-            if (UTILS.hasClass(inputTypeText[i],'invalid')){
-                UTILS.removeClass(inputTypeText[i],'invalid');
+            else{
+                emptyfieldsetCounter++;
             }
-            if (UTILS.hasClass(inputTypeUrl[i],'invalid')){
-                UTILS.removeClass(inputTypeUrl[i],'invalid');
+            if (UTILS.hasClass(inputTypeText[i] ,'invalid')){
+                UTILS.removeClass(inputTypeText[i] ,'invalid');
+            }
+            if (UTILS.hasClass(inputTypeUrl[i] ,'invalid')){
+                UTILS.removeClass(inputTypeUrl[i] ,'invalid');
             }
         }
+        //
         if(arrInvalidFieldset.length !==0){
             arrInvalidFieldset[0].focus();
             return false;
         }
+        else if(emptyfieldsetCounter === 3){
+                for (var j = 0; j < arrToBeActive.length; j++) {
+                    UTILS.addClass(arrToBeActive[j] , 'hidden');
+                }
+                return false;
+        }
         else{
             UTILS.emitEvent(document.getElementById('btn-settings'),'click',settingsBtnCheck);
-            bookmarks[activeBookmark].focus();
-            return true; //just for testing, after QA will be true
+            if(UTILS.hasClass(bookmarks , 'hidden')){
+                for (var k = 0; k < arrToBeActive.length; k++) {
+                    UTILS.removeClass(arrToBeActive[k] , 'hidden');
+                }
+            }
+            bookmarks.focus();
+            return true;
         }
     };
 
         UTILS.addEvent(forms[0],'submit',formValidation);
 
+    var selectOptionHandler = function(e){
+        e.preventDefault();
+        e = e.target;
 
+    };
+
+    // UTILS.addEvent(bookmarks[0],'change',selectOptionHandler);
 
     /*
     * checkHash function is adding and removing classes
@@ -161,8 +183,8 @@ window.onload = (function() {
         }
     };
 
-    var currentTabContent = tabActiveContent(TabsContentCollection),
-        currentTab = tabActive(TabsCollection),
+    var currentTabContent = getActiveTabContent(TabsContentCollection),
+        currentTab = getActiveTab(TabsCollection),
         currentHash = location.hash;
     UTILS.addEvent(document.getElementById('btn-settings'),'click',settingsBtnCheck);
     UTILS.addEvent(window,'hashchange',checkHash);
