@@ -32,6 +32,7 @@ window.onload = (function() {
                 }
             }
         };
+
     var settingsBtnCheck = function(e){
         var target = e ? e.target : window.event.srcElement;
         var hasActive = UTILS.hasClass(target,'active');

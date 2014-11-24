@@ -116,14 +116,17 @@ body {
     background-size: cover;
     min-width: 657px;
 }
+
 ul, ol {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 select{
     border: none;
 }
+
 .bookmarks{
     width: 250px;
     display: inline-block;
@@ -136,22 +139,27 @@ select{
     appearance: none;
     background: white url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat 92% center;
 }
+
 header {
     background-color: black;
 }
+
 header>div.layout-wrap{
     height: 60px;
     margin: 0px 2%;
     padding: 16px;
 }
+
 img[alt="netcraft"] {
     position: absolute;
     top: 0;
     left: 0;
 }
+
 .layout-wrap{
     margin: 0px 2.967905%;
 }
+
 .layout-wrap>a {
     display: block;
     position: relative;
@@ -161,22 +169,28 @@ img[alt="netcraft"] {
     vertical-align: top;
     float: left;
 }
+
 form.search-box {
     float: right;
 }
+
 input[name="q"] {
     height: 23px;
 }
+
 .page-body{
     background-color: rgba(0, 0, 0,.3);
 }
+
 .page-body.layout-wrap {
     margin: 0px 1.767905%;
     padding: 16px;
 }
+
 .notifications,nav,fieldset.sf-settings {
     margin-bottom: 16px;
 }
+
 .notifications {
     height: 36px;
     line-height: 36px; /*height*/
@@ -184,9 +198,11 @@ input[name="q"] {
     background-color: #EBEBEB;
     padding-left: 15px;
 }
+
 nav{
     height: 155px;
 }
+
 .arrow, .action-list, .settings{
     -webkit-transition: all .4s ease;
     -moz-transition: all .4s ease;
@@ -194,6 +210,7 @@ nav{
     -o-transition: all .4s ease;
     transition: all .4s ease;
 }
+
 .nav-section {
     position: relative;
     float: left;
@@ -204,9 +221,11 @@ nav{
     background-repeat: no-repeat;
     background-position: center 70px;
 }
+
 nav div:last-child {
     margin-right:0;
 }
+
 .menu, .tab, .iframe , fieldset.sf-settings{
     width: 100%;
 }
