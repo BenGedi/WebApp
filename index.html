@@ -25,7 +25,10 @@
         <!-- Add your site or application content here -->
         <header>
               <div class="layout-wrap">
-                <a href="#" tabindex="0">netcraft<img src="https://googledrive.com/host/0B6ZIsommzsgVMVA2MzdKUjN2S0U/logo-netcraft.svg" alt="netcraft"></a>
+                <a href="#" tabindex="0">
+                    netcraft
+                    <img src="https://googledrive.com/host/0B6ZIsommzsgVMVA2MzdKUjN2S0U/logo-netcraft.svg" alt="netcraft">
+                </a>
 
                 <form class="search-box" method="get" action="http://www.google.com">
                     <input type="search" name="q" placeholder="search" tabindex="0">
@@ -117,10 +120,10 @@
                             </select>
                             <div class="reports-options-buttons">
                                 <a class="btn-expand hidden" href="#" id="expand-quick-reports" tabindex="0">expand</a>
-                                <button class="btn-settings active" id="btn-settings" tabindex="0">settings</button>
+                                <button class="btn-settings active" id="btnSettings-quick-reports" tabindex="0">settings</button>
                             </div>
-                            <div id="settings" class="settings">
-                                <form class="frmSettings" name="frmSettings" novalidate>
+                            <div id="settings-quick-reports" class="settings">
+                                <form class="frmSettings" name="frmReportsSettings" id="frmReportsSettings" novalidate>
                                     <fieldset class="sf-settings">
                                         <span class="setting--report-num">Reprot 01</span>
                                         <div class="frmSettings-inputWraper frmName">
@@ -162,67 +165,67 @@
                             </div>
                         </div>
                         <div class="reports-content hidden" id="content-quick-reports">
-                            <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
+                            <iframe class="iframe" src="" frameborder="0"></iframe>
                         </div>
                     </div>
 
                     <div class="folders-wraper tab hidden" id="tab-fmy-folders">
                         <div class="reports-options-buttons">
-                            <a class="btn-expand" href="http://www.netcraft.co.il/" >expand</a>
+                            <a class="btn-expand" href="http://www.paulirish.com/" >expand</a>
                         </div>
                         <div class="folder-content">
-                            <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
+                            <iframe class="iframe" src="http://www.paulirish.com/" frameborder="0"></iframe>
                         </div>
                     </div>
 
                     <div class="team-folders-wraper tab hidden" id="tab-my-team-folders">
                         <div class="reports-options">
 
-                            <select class="bookmarks hidden" name="bookmarks" id="bookmarks">
+                            <select class="bookmarks hidden" name="bookmarks" id="bookmarks-my-team-folders">
                             </select>
 
                             <div class="reports-options-buttons">
-                                <a class="btn-expand hidden" href="#">expand</a>
-                                <button class="btn-settings active" id="btn-settings">settings</button>
+                                <a class="btn-expand hidden" id="expand-my-team-folders" href="#">expand</a>
+                                <button class="btn-settings active" id="btnSettings-my-team-folders">settings</button>
                             </div>
 
-                            <div id="settings" class="settings">
+                            <div id="settings-my-team-folders" class="settings">
 
-                                <form class="frmSettings" name="frmSettings" novalidate>
+                                <form class="frmSettings" name="frmFolderSettings" id="frmFolderSettings" novalidate>
 
                                     <fieldset class="sf-settings">
-                                        <span class="setting--report-num">Reprot 01</span>
+                                        <span class="setting--report-num">Folder 01</span>
                                         <div class="frmSettings-inputWraper frmName">
-                                            <input class="frmSettings-input" type="text" id="nameReport1">
-                                            <label class="frmSettings-label" for="nameReport1">Name</label>
+                                            <input class="frmSettings-input" type="text" id="nameFolder1">
+                                            <label class="frmSettings-label" for="nameFolder1">Name</label>
                                         </div>
                                         <div class="frmSettings-inputWraper frmUrl">
-                                            <input class="frmSettings-input" type="url" id="urlReport1">
-                                            <label class="frmSettings-label" for="urlReport1">URL</label>
+                                            <input class="frmSettings-input" type="url" id="urlFolder">
+                                            <label class="frmSettings-label" for="urlFolder1">URL</label>
                                         </div>
                                     </fieldset>
 
                                     <fieldset class="sf-settings">
-                                        <span class="setting--report-num">Reprot 02</span>
+                                        <span class="setting--report-num">Folder 02</span>
                                         <div class="frmSettings-inputWraper frmName">
-                                            <input class="frmSettings-input" type="text" id="nameReport2">
-                                            <label class="frmSettings-label" for="nameReport2">Name</label>
+                                            <input class="frmSettings-input" type="text" id="nameFolder2">
+                                            <label class="frmSettings-label" for="nameFolder2">Name</label>
                                         </div>
                                         <div class="frmSettings-inputWraper frmUrl">
-                                            <input class="frmSettings-input" type="url" id="urlReport2">
-                                            <label class="frmSettings-label" for="urlReport2">URL</label>
+                                            <input class="frmSettings-input" type="url" id="urlFolder2">
+                                            <label class="frmSettings-label" for="urlFolder2">URL</label>
                                         </div>
                                     </fieldset>
 
                                     <fieldset class="sf-settings">
-                                        <span class="setting--report-num">Reprot 03</span>
+                                        <span class="setting--report-num">Folder 03</span>
                                         <div class="frmSettings-inputWraper frmName">
-                                            <input class="frmSettings-input" type="text" id="nameReport3">
-                                            <label class="frmSettings-label" for="nameReport3">Name</label>
+                                            <input class="frmSettings-input" type="text" id="nameFolder3">
+                                            <label class="frmSettings-label" for="nameFolder3">Name</label>
                                         </div>
                                         <div class="frmSettings-inputWraper frmUrl">
-                                            <input class="frmSettings-input" type="url" id="urlReport3">
-                                            <label class="frmSettings-label" for="urlReport3">URL</label>
+                                            <input class="frmSettings-input" type="url" id="urlFolder3">
+                                            <label class="frmSettings-label" for="urlFolder3">URL</label>
                                         </div>
                                     </fieldset>
 
@@ -235,8 +238,8 @@
                             </div>
                         </div>
 
-                        <div class="reports-content js-expand hidden">
-                            <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
+                        <div class="reports-content hidden" id="content-my-team-folders">
+                            <iframe class="iframe" src="" frameborder="0"></iframe>
                         </div>
 
                     </div>
@@ -244,11 +247,11 @@
                     <div class="folders-wraper tab hidden" id="tab-public-folders">
 
                         <div class="reports-options-buttons">
-                            <a class="btn-expand" href="http://www.netcraft.co.il/" >expand</a>
+                            <a class="btn-expand" href="http://www.paulirish.com/" >expand</a>
                         </div>
 
                         <div class="folder-content">
-                            <iframe class="iframe" src="http://www.netcraft.co.il/" frameborder="0"></iframe>
+                            <iframe class="iframe" src="http://www.paulirish.com/" frameborder="0"></iframe>
                         </div>
 
                     </div>
