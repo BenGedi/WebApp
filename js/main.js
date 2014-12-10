@@ -11,6 +11,7 @@ window.onload = (function() {
             quickReports:'',
             myFoleders:''
         };
+    var forms = UTILS.qsa('.frmSettings');
     var btnSettingTabs = UTILS.qsa('.tab .btn-settings');
 
     var getActiveTab = function(tabs){
@@ -78,15 +79,11 @@ window.onload = (function() {
         var contentIframe = tabContent.childNodes[1];
         var optionValue = target.options[target.selectedIndex].value;
         contentIframe.setAttribute('src' , optionValue);
+        UTILS.qs('#expand-'+currentTabContentId).setAttribute('href', optionValue);
     };
-
-
-
-    var forms = UTILS.qsa('.frmSettings');
 
     var formValidation = function(e){
         e.preventDefault();
-
         var formTarget = e.target;
         inputTypeText = formTarget.querySelectorAll('input[type="text"]');
         inputTypeUrl = formTarget.querySelectorAll('input[type="url"]');
@@ -97,7 +94,6 @@ window.onload = (function() {
         var SettingButton = UTILS.qs('#btnSettings-'+currentTabContentId);
         var emptyfieldsetsCounter = 0;
         var arrToBeActive = [bookmarks,btnExpand,tabContent];
-        // var arrFormInputs = [inputTypeText,inputTypeText];
 
         //ben: 'arrInvalidFieldset' can be done by qs of the class invalid.
         var arrInvalidFieldset =[];
@@ -158,9 +154,11 @@ window.onload = (function() {
             //  to the iframe.
             if(bookmarks.childNodes[0].nodeType === 1){
                 tabContent.childNodes[1].setAttribute('src',bookmarks.childNodes[0].value);
+                btnExpand.setAttribute('href' , bookmarks.childNodes[0].value);
             }
             else{
                 tabContent.childNodes[1].setAttribute('src',bookmarks.childNodes[1].value);
+                btnExpand.setAttribute('href' , bookmarks.childNodes[1].value);
             }
 
             return true;
