@@ -82,6 +82,11 @@ window.onload = (function() {
         UTILS.qs('#expand-'+currentTabContentId).setAttribute('href', optionValue);
     };
 
+    var isUrlValid = function(str){
+        var re = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-zA-Z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+        return re.test(str);
+    };
+
     var formValidation = function(e){
         e.preventDefault();
         var formTarget = e.target;
@@ -103,13 +108,20 @@ window.onload = (function() {
 
         for (var i = 0; i < inputTypeText.length; i++) {
 
-            if(inputTypeText[i].value !== '' && inputTypeUrl[i].value === ''){
+            // checking url validation
+            if(inputTypeUrl[i].value !== '' && !isUrlValid(inputTypeUrl[i].value)){
+                    inputTypeUrl[i].value = '';
+            }
+
+            var url = inputTypeUrl[i].value;
+            var name = inputTypeText[i].value;
+            if(name !== '' && url === '' ){
                 UTILS.addClass(inputTypeUrl[i],'invalid');
                 // adding to invalid input to arr
                 arrInvalidFieldset.push(inputTypeUrl[i]);
                 continue;
             }
-            else if (inputTypeText[i].value === '' && inputTypeUrl[i].value !== '') {
+            else if (name === '' && url !== '' ) {
                 UTILS.addClass(inputTypeText[i],'invalid');
                 // adding to invalid input to arr
                 arrInvalidFieldset.push(inputTypeText[i]);
@@ -226,13 +238,13 @@ window.onload = (function() {
         UTILS.addClass(notification,'hidden');
         localStorage.setItem('tabs',JSON.stringify(storage));
 
-        for (var i = 0; i < 2; i++) {
-            UTILS.addEvent(forms[i],'submit',formValidation);
-            UTILS.addEvent(btnSettingTabs[i],'click',settingsBtnCheck);
-            UTILS.addEvent(bookmarks[i],'change',selectOptionHandler);
-        }
-        for (var j = 0; j < 4; j++) {
-            UTILS.addEvent(TabsCollection[j],'click',checkHash);
+        for (var i = 0; i < 4; i++) {
+            if(i<2){
+                UTILS.addEvent(forms[i],'submit',formValidation);
+                UTILS.addEvent(btnSettingTabs[i],'click',settingsBtnCheck);
+                UTILS.addEvent(bookmarks[i],'change',selectOptionHandler);
+            }
+            UTILS.addEvent(TabsCollection[i],'click',checkHash);
         }
     };
 
