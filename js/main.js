@@ -161,9 +161,9 @@ window.onload = (function() {
             }
             bookmarks.focus();
 
-            // when the 'bookmarks' select is trigger for the first time it is empty and it may holds a text node type,
-            //  so this if condition is checking if the first child is a text or element type and then passing the src
-            //  to the iframe.
+            // when the 'bookmarks' (select) is trigger for the first time it is empty and it may holds a text node
+            // type inside of it, so this 'if' condition checking if the first child is a text or element type and
+            // then passing the src to the iframe.
             if(bookmarks.childNodes[0].nodeType === 1){
                 tabContent.childNodes[1].setAttribute('src',bookmarks.childNodes[0].value);
                 btnExpand.setAttribute('href' , bookmarks.childNodes[0].value);
@@ -172,7 +172,6 @@ window.onload = (function() {
                 tabContent.childNodes[1].setAttribute('src',bookmarks.childNodes[1].value);
                 btnExpand.setAttribute('href' , bookmarks.childNodes[1].value);
             }
-
             return true;
         }
     };
